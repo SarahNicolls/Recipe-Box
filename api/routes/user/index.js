@@ -2,5 +2,6 @@ module.exports = [
   require("./create"),
   require("./login"),
   require("./addRecipeToUser"),
-  require("./getRecipesByUser")
+  require("./getRecipesByUser"),
+  require("./getAll")
 ];

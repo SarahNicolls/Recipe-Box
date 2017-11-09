@@ -1,1 +1,1 @@
-module.exports = [...require("./user")];
+module.exports = [...require("./user"), ...require("./recipe")];
