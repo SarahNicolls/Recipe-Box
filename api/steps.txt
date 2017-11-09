@@ -1,0 +1,53 @@
+AUTHENTICATION SETUP
+
+1. Install required packages
+    Packages
+        - hapi-auth-jwt2
+        - jsonwebtoken
+        - bcrypt-as-promised
+
+2. Add 'hapi-auth-jwt2' to our index, and use as a plugin in server.register
+
+3. Modify 'api' plugin (api.js), and add auth scheme setup. Set default auth method.
+
+4. Add 'config.auth.mode' as "optional" to each route config that we want public.
+
+5. Modify user model to include methods to:
+    Methods:
+        - generatePassword()
+            method should generate a salt, then a hash, 
+            then update the user with the hash value as the password field value.
+
+6. Modify user model to execute 'generatePassword()' before saving a new user.
+
+7. Improve our signup/create process by first filtering by email in the 
+User.pre('save) event of the User model to see if any other users already have
+ used that email, throw an error message if it is in use
+
+
+8. Modify user model to include methods to:
+    Methods:
+        - comparePassword(password)
+            method should compare a password passed in as the parameter to the
+            password stored on the user with the bcrypt.compare() method.
+
+            if the result (result equals whether they are authenticated or not) 
+            of the bcrypt.compare() is false then return false otherwise
+            return the authenticated user.
+
+9. Modify login endpoints to:
+    - Filter through users to find the user with the login email
+    - if there is a user, compare the login password by calling
+    user.comparePassword(password), else if no user was found, throw an
+    error message: 'Email and password combination stinks'
+    - if result of compare was successful, return the authenticated users, else
+    throw an error message: 'Email and password combination stinks'
+
+10. Modify user model to include methods to:
+    Methods
+        - generateJWT(user)
+            method will create a json web token using the 'jsonwebtoken' 
+            package method 'jwt.sign(data, secretKey, optionsObject)'
+
+11. Improve login to generate a JSON web token before sending the 
+authenticated user back in the HTTP response
