@@ -22,6 +22,7 @@ class AuthenticatedRoute extends Component {
     }
 
     token = jwt.decode(token);
+    console.log(token);
 
     if (!token || !token.id) {
       return this.setState(state => {
@@ -41,7 +42,7 @@ class AuthenticatedRoute extends Component {
     let { authenticated } = this.state;
 
     return authenticated ? (
-      <Route {...this.state} />
+      <Route {...this.props} />
     ) : (
       <div>Please Login to Recipe Box to continue</div>
     );
