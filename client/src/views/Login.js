@@ -15,15 +15,17 @@ class Login extends Component {
 
     this.setState(state => {
       return {
-        ...state.credentials,
-        [changeEvent.target.name]: changeEvent.target.value
+        credentials: {
+          ...state.credentials,
+          [changeEvent.target.name]: changeEvent.target.value
+        }
       };
     });
   };
 
   onFormSubmit = submitEvent => {
     submitEvent.preventDefault();
-
+    console.log(this.state.credentials);
     api.users
       .login(this.state.credentials)
       .then(user => {
@@ -57,7 +59,6 @@ class Login extends Component {
             required
             type={"password"}
             name={"password"}
-            placeholder={"*****"}
             onChange={this.onInputChange}
           />
           <br />
