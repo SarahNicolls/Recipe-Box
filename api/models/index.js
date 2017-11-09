@@ -10,7 +10,7 @@ const db = thinky({
 let User = require("./user")(db);
 let Recipe = require("./recipe")(db);
 
-User.hasAndBelongsToMany(Recipe, "recipe", "id", "id");
+User.hasAndBelongsToMany(Recipe, "recipes", "id", "id");
 
 module.exports = {
   User: User,
