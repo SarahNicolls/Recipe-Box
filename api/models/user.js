@@ -7,7 +7,7 @@ module.exports = db => {
     password: db.type.string().required()
   });
 
-  User.define("generatePassword", function() {
+  User.define("generatePassword", function () {
     return bcrypt
       .genSalt(10)
       .then(salt => bcrypt.hash(this.password, salt))
@@ -15,24 +15,22 @@ module.exports = db => {
       .catch(err => err);
   });
 
-  User.define("comparePassword", function(password) {
+  User.define("comparePassword", function (password) {
     return bcrypt
       .compare(password, this.password)
       .then(authed => {
-        console.log(authed);
-
-        authed ? this : false;
+        return authed ? this : false;
       })
       .catch(err => err);
   });
 
-  User.define("generateJWT", function(user) {
+  User.define("generateJWT", function (user) {
     return jwt.sign(Object.assign({}, this), "supersecretsecret", {
       algorithm: "HS256"
     });
   });
 
-  User.pre("save", function(next) {
+  User.pre("save", function (next) {
     User.filter({ email: this.email }).then(result => {
       if (result.length > 0) {
         return next("Email and Password combination is invalid");
@@ -42,7 +40,6 @@ module.exports = db => {
     return this.generatePassword()
       .then(() => next())
       .catch(err => {
-        console.log(err);
         next(err);
       });
   });
