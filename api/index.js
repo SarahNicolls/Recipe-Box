@@ -1,6 +1,7 @@
 const hapi = require("hapi");
 const server = new hapi.Server();
-const api = require("api");
+const api = require("./api");
+const hapiAuthJwt = require("hapi-auth-jwt2");
 
 server.connection({
   host: "localhost",
@@ -13,13 +14,16 @@ server.connection({
   }
 });
 
-server.register([
-  {
-    register: api
-  }
-]);
-
 server
-  .start()
-  .then(() => console.log(`Server started at ${server.info.uri}`))
-  .catch(err => console.log(err));
+  .register([
+    hapiAuthJwt,
+    {
+      register: api
+    }
+  ])
+  .then(() => {
+    server
+      .start()
+      .then(() => console.log(`Server started at ${server.info.uri}`))
+      .catch(err => console.log(err));
+  });

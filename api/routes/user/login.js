@@ -2,9 +2,11 @@ module.exports = {
   method: "POST",
   path: "/api/users/login",
   config: {
+    auth: {
+      mode: "optional"
+    },
     handler: function(request, reply) {
-      let { email, password } = request.payload;
-      this.models.User.filter({ email: email });
+      reply("not implemented");
     }
   }
 };
