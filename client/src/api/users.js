@@ -66,6 +66,14 @@ const getById = id => {
     .catch(err => err);
 };
 
+const getRecipesByUser = (id) => {
+  return fetch(CREATE_URL(`${id}/recipes`), {
+    method: "GET",
+  })
+    .then(response => response.json())
+    .catch(err => err);
+}
+
 const update = (data, id) => {
   return fetch(CREATE_URL(id), {
     method: "PUT",
