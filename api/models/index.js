@@ -5,7 +5,9 @@ const db = thinky({
 });
 
 let User = require("./user")(db);
+let Recipe = require("./recipe")(db);
 
 module.exports = {
-  User: User
+  User: User,
+  Recipe: Recipe
 };
