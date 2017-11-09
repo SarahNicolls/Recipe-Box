@@ -6,6 +6,8 @@ import Login from "./views/Login";
 import Signup from "./views/Signup";
 import Profile from "./views/Profile";
 
+import AuthenticatedRoute from "./containers/AuthenticatedRoute";
+
 class Router extends Component {
   render() {
     return (
@@ -14,7 +16,7 @@ class Router extends Component {
           <Route exact path={"/"} component={Home} />
           <Route exact path={"/Login"} component={Login} />
           <Route exact path={"/Signup"} component={Signup} />
-          <Route exact path={"/Profile"} component={Profile} />
+          <AuthenticatedRoute exact path={"/Profile"} component={Profile} />
         </Switch>
       </BrowserRouter>
     );
