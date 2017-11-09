@@ -1,5 +1,4 @@
-const CREATE_URL = (path = "") =>
-  `https://ec2-54-244-61-151.us-west-2.compute.amazonaws.com/${path}`;
+const CREATE_URL = (path = "") => `http://localhost:4040/api/users/${path}`;
 
 const signup = credentials => {
   return fetch(CREATE_URL(), {
