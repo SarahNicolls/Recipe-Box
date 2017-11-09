@@ -5,7 +5,7 @@ module.exports = {
     auth: {
       mode: "optional"
     },
-    handler: function (request, reply) {
+    handler: function(request, reply) {
       let { email, password } = request.payload;
       this.models.User
         .filter({ email: email })
@@ -24,7 +24,7 @@ module.exports = {
 
           return user.generateJWT();
         })
-        .then(token => reply(token))
+        .then(token => reply({ token: token }))
         .catch(err => reply(err));
     }
   }
