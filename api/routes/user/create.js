@@ -10,6 +10,10 @@ module.exports = {
 
       user
         .save()
+        .then(user => {
+          delete user.password;
+          reply(user);
+        })
         .then(result => reply(result))
         .catch(err => reply(err));
     }

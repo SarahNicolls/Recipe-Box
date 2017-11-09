@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt-as-promised");
+const jwt = require("jsonwebtoken");
 
 module.exports = db => {
   let User = db.createModel("User", {
@@ -15,7 +16,16 @@ module.exports = db => {
   });
 
   User.define("comparePassword", function(password) {
-    return bcrypt;
+    return bcrypt
+      .compare(password, this.password)
+      .then(authed => (authed ? this : false))
+      .catch(err => err);
+  });
+
+  User.define("generateJWT", function(user) {
+    return jwt.sign(Object.assign({}, this), "supersecretsecret", {
+      algorithm: "HS256"
+    });
   });
 
   User.pre("save", function(next) {
