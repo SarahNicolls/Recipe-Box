@@ -12,7 +12,7 @@ module.exports = {
         .save()
         .then(user => {
           delete user.password;
-          reply(user);
+          return user;
         })
         .then(result => reply(result))
         .catch(err => reply(err));
