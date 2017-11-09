@@ -1,1 +1,5 @@
-module.exports = [require("./create"), require("./login")];
+module.exports = [
+  require("./create"),
+  require("./login"),
+  require("./addRecipeToUser")
+];
