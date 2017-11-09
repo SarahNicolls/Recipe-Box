@@ -8,6 +8,7 @@ class Home extends Component {
         <div>
           <h1>Recipe Box</h1>
         </div>
+
         <div>
           <Link to={"/Signup"}>Signup</Link>
         </div>
