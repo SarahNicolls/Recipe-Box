@@ -46,7 +46,7 @@ class Signup extends Component {
             required
             type={"email"}
             name={"email"}
-            placeholder={"janedoe@email.com"}
+            placeholder={"Email"}
             onChange={this.onInputChange}
           />
           <br />
@@ -54,7 +54,7 @@ class Signup extends Component {
             required
             type={"password"}
             name={"password"}
-            placeholder={"*****"}
+            placeholder={"Password"}
             onChange={this.onInputChange}
           />
           <br />

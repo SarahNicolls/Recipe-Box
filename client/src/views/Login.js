@@ -25,7 +25,6 @@ class Login extends Component {
 
   onFormSubmit = submitEvent => {
     submitEvent.preventDefault();
-    console.log(this.state.credentials);
     api.users
       .login(this.state.credentials)
       .then(user => {
@@ -51,7 +50,7 @@ class Login extends Component {
             required
             type={"email"}
             name={"email"}
-            placeholder={"janedoe@email.com"}
+            placeholder={"Email"}
             onChange={this.onInputChange}
           />
           <br />
@@ -59,6 +58,7 @@ class Login extends Component {
             required
             type={"password"}
             name={"password"}
+            placeholder={"Password"}
             onChange={this.onInputChange}
           />
           <br />

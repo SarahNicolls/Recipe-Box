@@ -18,11 +18,7 @@ module.exports = db => {
   User.define("comparePassword", function(password) {
     return bcrypt
       .compare(password, this.password)
-      .then(authed => {
-        console.log(authed);
-
-        authed ? this : false;
-      })
+      .then(authed => (authed ? this : false))
       .catch(err => err);
   });
 

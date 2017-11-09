@@ -22,7 +22,6 @@ module.exports = {
           if (!user) {
             throw "email and password combo is invalid";
           }
-          console.log(user);
           delete user.password;
 
           return user.generateJWT();
