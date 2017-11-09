@@ -24,7 +24,7 @@ module.exports = {
 
           return user.generateJWT();
         })
-        .then(token => reply(token))
+        .then(token => reply({ token: token }))
         .catch(err => reply(err));
     }
   }
