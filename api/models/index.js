@@ -1,7 +1,10 @@
 const thinky = require("thinky");
+const config = require("../config");
 
 const db = thinky({
-  db: "RecipeBox"
+  db: config.db.name,
+  port: config.db.port,
+  host: config.db.host
 });
 
 let User = require("./user")(db);
