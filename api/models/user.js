@@ -15,7 +15,9 @@ module.exports = db => {
   });
 
   User.define("comparePassword", function(password) {
-    return bcrypt;
+    return bcrypt
+    .compare(this.password)
+    .then(authed => )
   });
 
   User.pre("save", function(next) {
