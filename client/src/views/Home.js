@@ -37,8 +37,10 @@ class Home extends Component {
 
         {recipes.map(recipe => (
           <div key={recipe.id}>
-            <Meal>{recipe.strMeal}</Meal>
-            <Image src={recipe.strMealThumb} alt={recipe.strMeal} />
+            <Link to={`/recipes/${recipe.id}`}>
+              <Meal>{recipe.strMeal}</Meal>
+              <Image src={recipe.strMealThumb} alt={recipe.strMeal} />
+            </Link>
           </div>
         ))}
 
