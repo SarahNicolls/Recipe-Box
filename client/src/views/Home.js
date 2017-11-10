@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import api from '../api';
 
 class Home extends Component {
@@ -7,10 +8,21 @@ class Home extends Component {
     super(props);
     this.state = {
       recipes: []
+=======
+import api from "../api";
+
+class Home extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      recipe: {}
+>>>>>>> 91fb90997b266342ca7775bbc43a4ed99915168b
     };
   }
 
   componentDidMount() {
+<<<<<<< HEAD
     api.recipes.getAll().then(recipes => {
       this.setState(state => {
         return {
@@ -23,6 +35,19 @@ class Home extends Component {
   render() {
     console.log(this.state)
     let { recipes } = this.state;
+=======
+    api.recipes.getAll().then(data => {
+      this.setState(state => {
+        return {
+          recipe: data
+        };
+      });
+    });
+  }
+
+  render() {
+    console.log(this.state);
+>>>>>>> 91fb90997b266342ca7775bbc43a4ed99915168b
     return (
       <div>
         <div>
