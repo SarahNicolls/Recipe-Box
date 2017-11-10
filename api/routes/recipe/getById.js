@@ -2,7 +2,10 @@ module.exports = {
   method: "GET",
   path: "/api/recipes/{id}",
   config: {
-    handler: function (request, reply) {
+    auth: {
+      mode: "optional"
+    },
+    handler: function(request, reply) {
       let { id } = request.params;
       this.models.Recipe
         .get(id)
@@ -10,4 +13,4 @@ module.exports = {
         .catch(err => reply(err));
     }
   }
-}
+};

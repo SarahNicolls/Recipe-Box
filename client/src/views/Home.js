@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import api from '../api';
-import styled from 'styled-components';
+import api from "../api";
+import styled from "styled-components";
 
 class Home extends Component {
   constructor(props) {
@@ -16,9 +16,9 @@ class Home extends Component {
       this.setState(state => {
         return {
           recipes
-        }
-      })
-    })
+        };
+      });
+    });
   }
 
   render() {
@@ -43,20 +43,16 @@ class Home extends Component {
             </Link>
           </div>
         ))}
-
       </div>
     );
   }
 }
 
-const Meal = styled.div`
-  font-size: 24px;
-`;
+const Meal = styled.div`font-size: 24px;`;
 
 const Image = styled.img`
   height: 150px;
   border-radius: 50%;
 `;
-
 
 export default Home;

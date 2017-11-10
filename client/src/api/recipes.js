@@ -4,15 +4,15 @@ const getAll = () => {
   return fetch(CREATE_URL())
     .then(res => res.json())
     .catch(err => console.log(err));
-}
+};
 
-const getById = (id) => {
+const getById = id => {
   return fetch(CREATE_URL(id))
     .then(res => res.json())
     .catch(err => console.log(err));
-}
+};
 
 export default {
   getAll,
   getById
-}
+};

@@ -5,6 +5,7 @@ import Home from "./views/Home";
 import Login from "./views/Login";
 import Signup from "./views/Signup";
 import Profile from "./views/Profile";
+import RecipeDetails from "./views/RecipeDetails";
 
 import AuthenticatedRoute from "./containers/AuthenticatedRoute";
 
@@ -14,9 +15,10 @@ class Router extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path={"/"} component={Home} />
-          <Route exact path={"/Login"} component={Login} />
-          <Route exact path={"/Signup"} component={Signup} />
-          <AuthenticatedRoute exact path={"/Profile"} component={Profile} />
+          <Route exact path={"/login"} component={Login} />
+          <Route exact path={"/signup"} component={Signup} />
+          <Route exact path={"/recipes/:id"} component={RecipeDetails} />
+          <AuthenticatedRoute exact path={"/profile"} component={Profile} />
         </Switch>
       </BrowserRouter>
     );
