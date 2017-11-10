@@ -1,28 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import api from '../api';
+import styled from 'styled-components';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       recipes: []
-=======
-import api from "../api";
-
-class Home extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      recipe: {}
->>>>>>> 91fb90997b266342ca7775bbc43a4ed99915168b
     };
   }
 
   componentDidMount() {
-<<<<<<< HEAD
     api.recipes.getAll().then(recipes => {
       this.setState(state => {
         return {
@@ -33,21 +22,7 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.state)
     let { recipes } = this.state;
-=======
-    api.recipes.getAll().then(data => {
-      this.setState(state => {
-        return {
-          recipe: data
-        };
-      });
-    });
-  }
-
-  render() {
-    console.log(this.state);
->>>>>>> 91fb90997b266342ca7775bbc43a4ed99915168b
     return (
       <div>
         <div>
@@ -61,9 +36,9 @@ class Home extends Component {
         </div>
 
         {recipes.map(recipe => (
-          <div>
-            <div>{recipe.strMeal}</div>
-            <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+          <div key={recipe.id}>
+            <Meal>{recipe.strMeal}</Meal>
+            <Image src={recipe.strMealThumb} alt={recipe.strMeal} />
           </div>
         ))}
 
@@ -71,5 +46,15 @@ class Home extends Component {
     );
   }
 }
+
+const Meal = styled.div`
+  font-size: 24px;
+`;
+
+const Image = styled.img`
+  height: 150px;
+  border-radius: 50%;
+`;
+
 
 export default Home;
