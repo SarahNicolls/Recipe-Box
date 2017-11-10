@@ -31,10 +31,9 @@ class Login extends Component {
         if (user.error) {
           return;
         }
-
         localStorage.setItem("token", user.token);
-        console.log(user.token, user);
-        this.props.history.push("/Profile");
+        localStorage.setItem("email", this.state.credentials.email);
+        this.props.history.push(`/Profile`);
       })
       .catch(err => console.log(err));
   };

@@ -42,6 +42,15 @@ const getAll = () => {
     .catch(err => err);
 };
 
+const getUserByEmail = email => {
+  return fetch(CREATE_URL(email), {
+    method: "GET",
+    headers: { "Content-Type": "application/json" }
+  })
+    .then(response => response.json())
+    .catch(err => console.log(err))
+}
+
 const getAllByUser = id => {
   return fetch(CREATE_URL(id), {
     method: "GET",
@@ -101,6 +110,8 @@ export default {
   getAll,
   getById,
   getAllByUser,
+  getRecipesByUser,
+  getUserByEmail,
   update,
   remove
 };

@@ -3,5 +3,6 @@ module.exports = [
   require("./login"),
   require("./addRecipeToUser"),
   require("./getRecipesByUser"),
-  require("./getAll")
+  require("./getAll"),
+  require("./getUserById")
 ];
