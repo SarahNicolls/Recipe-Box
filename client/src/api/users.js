@@ -103,6 +103,20 @@ const remove = id => {
     .catch(err => err);
 };
 
+const addRecipeToUser = (id, data) => {
+  console.log(JSON.stringify({ data }))
+  return fetch(CREATE_URL(`${id}/recipes`), {
+    method: "POST",
+    body: JSON.stringify({ id: data }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    }
+  })
+    .then(response => response.json())
+    .catch(err => err);
+}
+
 export default {
   login,
   signup,
@@ -113,5 +127,6 @@ export default {
   getRecipesByUser,
   getUserByEmail,
   update,
-  remove
+  remove,
+  addRecipeToUser
 };

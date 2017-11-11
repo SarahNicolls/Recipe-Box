@@ -6,6 +6,7 @@ import Login from "./views/Login";
 import Signup from "./views/Signup";
 import Profile from "./views/Profile";
 import RecipeDetails from "./views/RecipeDetails";
+import Create from "./views/Create";
 
 import AuthenticatedRoute from "./containers/AuthenticatedRoute";
 
@@ -17,6 +18,7 @@ class Router extends Component {
           <Route exact path={"/"} component={Home} />
           <Route exact path={"/login"} component={Login} />
           <Route exact path={"/signup"} component={Signup} />
+          <AuthenticatedRoute exact path={"/recipes/create"} component={Create} />
           <Route exact path={"/recipes/:id"} component={RecipeDetails} />
           <AuthenticatedRoute exact path={"/profile"} component={Profile} />
         </Switch>

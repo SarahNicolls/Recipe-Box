@@ -1,6 +1,6 @@
 module.exports = {
   method: "POST",
-  path: "/api/users/{userId}/recipe",
+  path: "/api/users/{userId}/recipes",
   config: {
     handler: function (request, reply) {
       let userId = request.params.userId;

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import api from "../api";
 import styled from "styled-components";
+import Navbar from '../components/Navbar';
+import AuthenticatedComponent from '../containers/AuthenticatedComponent'
 
 class Home extends Component {
   constructor(props) {
@@ -26,14 +28,22 @@ class Home extends Component {
     return (
       <div>
         <div>
-          <div>
-            <SLink to={"/Signup"}>Signup</SLink>
-          </div>
-          <div>
-            <SLink to={"/Login"}>Login</SLink>
-          </div>
-          <Title>Recipe Box</Title>
+          <AuthenticatedComponent
+            notAuthed={
+              <Container>
+                <NavLink>
+                  <SLink to={"/Signup"}>Signup</SLink>
+                </NavLink>
+                <NavLink>
+                  <SLink to={"/Login"}>Login</SLink>
+                </NavLink>
+              </Container>
+            }
+            isAuthed={
+              <Navbar />
+            } />
         </div>
+        <Title>Recipe Box</Title>
         <Recipes>
           {recipes.map(recipe => (
             <Recipe key={recipe.id}>
@@ -49,14 +59,29 @@ class Home extends Component {
   }
 }
 
-const Title = styled.h1.attrs({ className: "f1" })`text-align: center;`;
+const Container = styled.div`
+padding: 15px 15px;
+text-align: center;
+background-color: #1E824C;
+`;
 
-const SLink = styled(Link)`text-decoration: none;`;
+const Title = styled.h1.attrs({ className: "f1" }) `text-align: center;`;
+
+const SLink = styled(Link) `
+  text-decoration: none;
+  color: #fff;
+`;
+
+const NavLink = styled.span`
+  padding: 5px 15px;
+`;
 
 const Meal = styled.div`
   font-size: 24px;
   width: 250px;
   min-height: 50px;
+  text-align: center;
+  color: #1E824C;
 `;
 
 const Recipes = styled.div`
@@ -69,8 +94,9 @@ const Recipes = styled.div`
 const Recipe = styled.div`
   width: calc(100vw / 3);
   display: flex;
-  justify-content: space-evenly;
-
+  justify-content: center;
+  margin-bottom: 50px;
+  
   &:hover {
     border: 1px solid #ddd;
     box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
@@ -83,8 +109,11 @@ const Recipe = styled.div`
 
 const Image = styled.img`
   height: 150px;
+  width: 150px;
   border-radius: 50%;
   padding: 15px;
+  display: block;
+  margin: 0 auto;
 `;
 
 export default Home;

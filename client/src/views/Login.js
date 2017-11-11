@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
 import api from "../api";
 
 class Login extends Component {
@@ -40,32 +41,84 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h1>Login to access your Recipe Box</h1>
-        </div>
-        <form onSubmit={this.onFormSubmit}>
-          <input
-            required
-            type={"email"}
-            name={"email"}
-            placeholder={"Email"}
-            onChange={this.onInputChange}
-          />
-          <br />
-          <input
-            required
-            type={"password"}
-            name={"password"}
-            placeholder={"Password"}
-            onChange={this.onInputChange}
-          />
-          <br />
-          <input type={"submit"} />
-        </form>
-      </div>
+      <Container>
+        <Measure>
+          <Title>Login to access your Recipe Box</Title>
+          <Form onSubmit={this.onFormSubmit}>
+            <FormItem>
+              <Input
+                required
+                type={"email"}
+                name={"email"}
+                placeholder={"Email"}
+                onChange={this.onInputChange}
+              />
+            </FormItem>
+            <FormItem>
+              <Input
+                required
+                type={"password"}
+                name={"password"}
+                placeholder={"Password"}
+                onChange={this.onInputChange}
+              />
+            </FormItem>
+            <FormItem>
+              <Input type={"submit"} />
+            </FormItem>
+          </Form>
+        </Measure>
+      </Container>
     );
   }
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+`;
+
+const Measure = styled.div.attrs({ className: "measure" }) `
+  background-color: #1E824C;
+  padding: 50px 25px;
+`;
+
+const Title = styled.h1.attrs({
+  className: "f3"
+}) `
+  color: #fff;
+  text-align: center;
+  font-weight: 400;
+`;
+
+const Form = styled.form.attrs({
+  className: "pa4 black-80 measure"
+}) `
+  
+  justify-content: center;
+`;
+
+const FormItem = styled.div`
+  padding-top: 15px;
+`;
+
+const Input = styled.input.attrs({
+  className: "input-reset ba b--black-20 pa2 mb2 db w-100"
+}) ``;
+
+const TextArea = styled.textarea.attrs({
+  rows: 8,
+  className: "input-reset ba b--black-20 pa2 mb2 db w-100"
+}) ``;
+
+const Label = styled.label.attrs({
+  className: "f6 b db mb2"
+}) `
+
+`;
+
 
 export default Login;

@@ -5,7 +5,7 @@ module.exports = {
     auth: {
       mode: "optional"
     },
-    handler: function(request, reply) {
+    handler: function (request, reply) {
       let user = new this.models.User(request.payload);
 
       user
