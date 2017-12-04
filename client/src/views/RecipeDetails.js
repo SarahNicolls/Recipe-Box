@@ -108,6 +108,10 @@ const SLink = styled.div.attrs({
   border: 1px solid #888;
   padding: 5px 15px;
   
+  > a {
+    text-decoration: none;
+  }
+
   &:hover {
     transition: all .5s ease;
     background-color: #1E824C;
